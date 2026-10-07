@@ -2,26 +2,28 @@
 
 
 * {
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 
 html {
-    scroll-behavior:smooth;
+    scroll-behavior: smooth;
 }
 
 
 body {
 
-    background:#050505;
+    background: #050505;
 
-    color:white;
+    color: white;
 
-    font-family:'Inter', sans-serif;
+    font-family: 'Inter', sans-serif;
 
-    overflow-x:hidden;
+    overflow-x: hidden;
+
+    width: 100%;
 
 }
 
@@ -34,46 +36,52 @@ body {
 
 .background {
 
-    position:fixed;
+    position: fixed;
 
-    inset:0;
+    inset: 0;
 
-    z-index:-3;
+    z-index: -3;
 
 
     background:
 
     radial-gradient(
         circle at 20% 20%,
-        rgba(255,255,255,.12),
+        rgba(255,255,255,0.12),
         transparent 35%
     ),
 
     radial-gradient(
         circle at 80% 70%,
-        rgba(120,120,120,.15),
+        rgba(150,150,150,0.15),
         transparent 40%
     );
 
 
-    animation:bgMove 15s infinite alternate;
+    animation: backgroundMove 15s infinite alternate;
 
 }
 
 
 
-@keyframes bgMove {
+@keyframes backgroundMove {
+
 
     from {
-        transform:scale(1);
+
+        transform: scale(1);
+
     }
+
 
     to {
-        transform:scale(1.15);
+
+        transform: scale(1.15);
+
     }
 
-}
 
+}
 
 
 
@@ -85,13 +93,11 @@ body {
 
 .particles {
 
-    position:fixed;
+    position: fixed;
 
-    inset:0;
+    inset: 0;
 
-    z-index:-2;
-
-    overflow:hidden;
+    z-index: -2;
 
 }
 
@@ -118,6 +124,7 @@ body {
 
 
     opacity:.35;
+
 
 
     box-shadow:
@@ -160,8 +167,6 @@ body {
 
 
 
-
-
 /* =========================
    ЗАСТАВКА
 ========================= */
@@ -172,12 +177,15 @@ body {
 
     position:fixed;
 
+
     inset:0;
 
 
     display:flex;
 
+
     justify-content:center;
+
 
     align-items:center;
 
@@ -185,13 +193,12 @@ body {
     background:#050505;
 
 
-    z-index:1000;
+    z-index:999;
 
 
     animation:introHide 3s forwards;
 
 }
-
 
 
 
@@ -207,34 +214,10 @@ body {
     letter-spacing:5px;
 
 
-    animation:introText 2s;
+    text-align:center;
+
 
 }
-
-
-
-@keyframes introText {
-
-
-    from {
-
-        opacity:0;
-
-        transform:translateY(40px);
-
-    }
-
-
-    to {
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
-
-}
-
 
 
 
@@ -262,8 +245,6 @@ body {
 
 
 
-
-
 /* =========================
    ГЛАВНЫЙ ЭКРАН
 ========================= */
@@ -277,15 +258,20 @@ body {
 
     display:flex;
 
+
     flex-direction:column;
 
 
     justify-content:center;
 
+
     align-items:center;
 
 
     text-align:center;
+
+
+    padding:0 20px;
 
 }
 
@@ -294,7 +280,7 @@ body {
 .hero h1 {
 
 
-    font-family:'Playfair Display',serif;
+    font-family:'Playfair Display', serif;
 
 
     font-size:100px;
@@ -306,7 +292,6 @@ body {
     animation:appear 2s;
 
 }
-
 
 
 
@@ -324,8 +309,10 @@ body {
 
     line-height:1.7;
 
-}
 
+    max-width:500px;
+
+}
 
 
 
@@ -345,7 +332,6 @@ body {
 
 
 
-
 @keyframes bounce {
 
 
@@ -358,6 +344,29 @@ body {
 }
 
 
+
+
+@keyframes appear {
+
+
+    from {
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
 
 
 
@@ -405,13 +414,15 @@ body {
     justify-content:center;
 
 
+    align-items:stretch;
+
+
     gap:30px;
 
 
     flex-wrap:wrap;
 
 }
-
 
 
 
@@ -425,9 +436,6 @@ body {
     padding:40px;
 
 
-    border-radius:25px;
-
-
     background:
 
     rgba(255,255,255,.06);
@@ -438,10 +446,14 @@ body {
     1px solid rgba(255,255,255,.12);
 
 
+    border-radius:25px;
+
+
     backdrop-filter:blur(15px);
 
 
     transition:.5s;
+
 
 }
 
@@ -459,7 +471,6 @@ body {
     rgba(255,255,255,.12);
 
 }
-
 
 
 
@@ -491,6 +502,38 @@ body {
 
 
 
+/* =========================
+   ПОЯВЛЕНИЕ ПРИ СКРОЛЛЕ
+========================= */
+
+
+.reveal {
+
+
+    opacity:0;
+
+
+    transform:translateY(70px);
+
+
+    transition:1.2s ease;
+
+}
+
+
+
+.reveal.active {
+
+
+    opacity:1;
+
+
+    transform:translateY(0);
+
+}
+
+
+
 
 
 /* =========================
@@ -516,6 +559,11 @@ body {
     align-items:center;
 
 
+    text-align:center;
+
+
+    padding:0 20px;
+
 }
 
 
@@ -526,10 +574,10 @@ button {
     padding:16px 50px;
 
 
-    border-radius:50px;
-
-
     border:none;
+
+
+    border-radius:50px;
 
 
     cursor:pointer;
@@ -540,6 +588,7 @@ button {
 
     transition:.4s;
 
+
 }
 
 
@@ -549,10 +598,8 @@ button:hover {
 
     transform:scale(1.1);
 
+
 }
-
-
-
 
 
 
@@ -565,16 +612,15 @@ button:hover {
     max-width:600px;
 
 
-    text-align:center;
-
-
     font-size:24px;
+
+
+    line-height:1.6;
 
 
     color:#ddd;
 
 }
-
 
 
 
@@ -606,6 +652,9 @@ button:hover {
     text-align:center;
 
 
+    padding:0 25px;
+
+
 }
 
 
@@ -617,6 +666,7 @@ button:hover {
 
 
     font-size:80px;
+
 
 }
 
@@ -633,193 +683,233 @@ button:hover {
 
     font-size:24px;
 
-}
 
+}
 
 
 
 
 
 /* =========================
-   ПОЯВЛЕНИЕ
-========================= */
-
-
-.reveal {
-
-
-    opacity:0;
-
-
-    transform:translateY(70px);
-
-
-    transition:1.2s;
-
-}
-
-
-
-
-.reveal.active {
-
-
-    opacity:1;
-
-
-    transform:translateY(0);
-
-}
-
-
-
-
-@keyframes appear {
-
-
-    from {
-
-        opacity:0;
-
-    }
-
-
-    to {
-
-        opacity:1;
-
-    }
-
-}
-
-
-
-
-
-
-
-@media(max-width:700px){
-
-
-.hero h1 {
-
-    font-size:55px;
-
-}
-
-
-.about h2 {
-
-    font-size:40px;
-
-}
-
-
-.final h2 {
-
-    font-size:55px;
-
-}
-
-
-}
-
-/* =========================
-   MOBILE OPTIMIZATION
+   МОБИЛЬНАЯ ВЕРСИЯ
 ========================= */
 
 
 @media(max-width:768px){
 
 
-body{
+
+body {
+
     overflow-x:hidden;
-}
-
-
-
-/* главное имя */
-
-.hero h1{
-
-    font-size:55px;
-
-    letter-spacing:5px;
 
 }
 
 
 
-/* описание */
 
-.hero p{
+.intro h1 {
 
-    font-size:17px;
-
-}
-
-
-
-/* заголовки */
-
-
-.about h2{
 
     font-size:38px;
 
+
+    letter-spacing:2px;
+
+
+    padding:0 20px;
+
 }
 
 
 
-/* карточки */
+
+.hero {
 
 
-.cards{
+    padding:0 25px;
+
+}
+
+
+
+.hero h1 {
+
+
+    font-size:52px;
+
+
+    letter-spacing:4px;
+
+
+}
+
+
+
+
+.hero p {
+
+
+    font-size:16px;
+
+
+    max-width:300px;
+
+
+    line-height:1.6;
+
+}
+
+
+
+
+.scroll {
+
+
+    margin-top:60px;
+
+}
+
+
+
+
+
+.about {
+
+
+    padding:80px 20px;
+
+}
+
+
+
+
+.about h2 {
+
+
+    font-size:38px;
+
+
+    margin-bottom:40px;
+
+}
+
+
+
+
+
+.cards {
+
 
     flex-direction:column;
 
+
     align-items:center;
 
-}
 
-
-
-.card{
-
-    width:90%;
-
-    padding:30px;
+    gap:20px;
 
 }
 
 
 
-/* кнопка */
+
+.card {
 
 
-button{
+    width:100%;
+
+
+    max-width:340px;
+
+
+    padding:30px 25px;
+
+
+}
+
+
+
+
+.card h3 {
+
+
+    font-size:22px;
+
+}
+
+
+
+
+.card p {
+
+
+    font-size:15px;
+
+}
+
+
+
+
+
+.secret {
+
+
+    padding:0 20px;
+
+}
+
+
+
+
+
+button {
+
 
     padding:14px 40px;
 
+
+    font-size:16px;
+
 }
 
 
 
-/* финал */
 
 
-.final h2{
+#message {
+
+
+    font-size:18px;
+
+
+    padding:0 20px;
+
+}
+
+
+
+
+.final h2 {
+
 
     font-size:55px;
 
 }
 
 
-.final p{
+
+
+.final p {
+
 
     font-size:18px;
 
+
+    line-height:1.6;
+
 }
+
 
 
 }
