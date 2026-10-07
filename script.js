@@ -1,84 +1,129 @@
-function showMessage(){
+// ===============================
+// Секретное сообщение
+// ===============================
 
 
-const message=document.getElementById("message");
+function showMessage() {
+
+
+    const message = document.getElementById("message");
+
+
+    message.innerHTML =
+
+    "Алёна 🖤<br><br>" +
+
+    "Я не знаю, насколько хорошо " +
+    "можно передать словами то, что чувствуешь.<br><br>" +
+
+    "Поэтому просто сделал маленький " +
+    "уголок, который будет только для тебя.<br><br>" +
+
+    "Надеюсь, он хотя бы немного " +
+    "подарит тебе улыбку ✨";
 
 
 
-message.innerHTML=
+    message.style.opacity = "0";
 
-"Алёна 🖤<br><br>"+
-
-"Мне просто хотелось сделать "+
-"что-то красивое специально для тебя.<br><br>"+
-
-"Иногда не нужны большие слова. "+
-"Достаточно человека, который делает "+
-"обычные дни немного лучше.";
+    message.style.transform = "translateY(20px)";
 
 
 
-
-message.style.opacity="0";
-
+    setTimeout(() => {
 
 
-setTimeout(()=>{
+        message.style.transition = "all 1.5s ease";
 
 
-message.style.transition="2s";
-
-message.style.opacity="1";
+        message.style.opacity = "1";
 
 
-},100);
+        message.style.transform = "translateY(0)";
+
+
+    }, 100);
+
+
+
+}
+
+
+
+
+
+
+
+// ===============================
+// Появление блоков при прокрутке
+// ===============================
+
+
+function revealOnScroll() {
+
+
+    const elements = document.querySelectorAll(".reveal");
+
+
+
+    elements.forEach((element) => {
+
+
+
+        const position = 
+        element.getBoundingClientRect().top;
+
+
+
+        const screenHeight =
+        window.innerHeight;
+
+
+
+        if(position < screenHeight - 120) {
+
+
+            element.classList.add("active");
+
+
+        }
+
+
+
+    });
 
 
 
 }
 
-
-
-
-function reveal(){
-
-
-const elements=document.querySelectorAll(".reveal");
-
-
-
-elements.forEach(element=>{
-
-
-const position=
-element.getBoundingClientRect().top;
-
-
-
-if(position < window.innerHeight-100){
-
-
-element.classList.add("active");
-
-
-}
-
-
-
-});
-
-
-
-}
 
 
 
 
 window.addEventListener(
-"scroll",
-reveal
+    "scroll",
+    revealOnScroll
 );
 
 
 
-reveal();
+revealOnScroll();
+
+
+
+
+
+
+
+// ===============================
+// Плавное появление сайта
+// ===============================
+
+
+window.addEventListener("load", () => {
+
+
+    document.body.style.opacity = "1";
+
+
+});
